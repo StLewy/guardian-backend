@@ -20,13 +20,13 @@ public class Guardian {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
+  private Long id;
 
-  String name;
-  String surname;
-  String phone;
-  String mail;
+  private String name;
+  private String surname;
+  private String phone;
+  private String mail;
 
-  LocalDate creation;
-  LocalDate update;
+  private LocalDate creation;
+  private LocalDate update;
 }
