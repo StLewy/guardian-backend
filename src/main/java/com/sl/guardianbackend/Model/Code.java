@@ -18,7 +18,7 @@ public class Code {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String code;
+  private String generateCode;
   private String registration;
   private LocalDate creation;
   private LocalDate update;
