@@ -9,5 +9,7 @@ import java.util.Optional;
 @Repository
 public interface CodesRepository extends JpaRepository<Code,Long> {
 
-  Optional<Code> findByCode(String code);
+  Optional<Code> findByGenerateCode(String code);
+
+  Optional<Code> findByGenerateCodeAndRegistration(String code, String registration);
 }

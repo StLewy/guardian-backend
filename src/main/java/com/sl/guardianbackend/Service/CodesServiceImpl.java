@@ -3,8 +3,6 @@ package com.sl.guardianbackend.Service;
 import com.sl.guardianbackend.Model.Code;
 import com.sl.guardianbackend.Repository.CodesRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -88,7 +86,7 @@ public class CodesServiceImpl implements CodesService {
   @Override
   public boolean checkCode(String code) {
     boolean isCode = false;
-    Optional<Code> codeDB = codesRepository.findByCode(code);
+    Optional<Code> codeDB = codesRepository.findByGenerateCode(code);
     if (codeDB.isPresent()){
       isCode = true;
     }
@@ -105,11 +103,22 @@ public class CodesServiceImpl implements CodesService {
     }while (isCode);
 
     Code newCode = new Code();
-    newCode.setCode(code);
+    newCode.setGenerateCode(code);
     newCode.setRegistration("N");
     newCode.setCreation(LocalDate.now());
 
     codesRepository.save(newCode);
     return code;
+  }
+
+  public Optional<Code> findByGenerateCodeAndRegistration(String generateCode, String registration) {
+    return codesRepository.findByGenerateCodeAndRegistration(generateCode, registration);
+  }
+
+  @Override
+  public void updateCode(Code code) {
+    code.setRegistration("Y");
+    code.setUpdate(LocalDate.now());
+    codesRepository.save(code);
   }
 }
