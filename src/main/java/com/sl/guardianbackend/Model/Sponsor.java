@@ -16,16 +16,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Guardian {
-
+public class Sponsor {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  private String name;
-  private String surname;
-  private String phone;
-  private String mail;
+  private String nick;
 
   private LocalDate creation;
   private LocalDate update;

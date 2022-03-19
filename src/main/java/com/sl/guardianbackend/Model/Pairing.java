@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -16,17 +13,16 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Guardian {
-
+public class Pairing {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  private String name;
-  private String surname;
-  private String phone;
-  private String mail;
-
+  private int period;
+  private double amount;
+  @OneToOne
+  private Needy needy;
+  @OneToOne
+  private Sponsor sponsor;
   private LocalDate creation;
   private LocalDate update;
 }
