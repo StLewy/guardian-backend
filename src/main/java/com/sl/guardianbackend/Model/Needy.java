@@ -23,7 +23,7 @@ public class Needy {
   private String cityUA;
   private String cityPL;
   private String description;
-  private String generateCode;
+  private String email;
   @OneToOne
   private Guardian guardian;
   private String status;

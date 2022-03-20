@@ -48,6 +48,7 @@ public class NeedyServiceImpl implements NeedyService {
         addNeedy.setDescription(needy.getDescription());
         addNeedy.setCreation(LocalDate.now());
         addNeedy.setStatus("O");
+        addNeedy.setEmail(needy.getEmail());
         needyRepository.save(addNeedy);
 
         needy.setStatusResponese("D");

@@ -16,6 +16,7 @@ public class NeedyDTO {
   private String cityUA;
   private String cityPL;
   private String description;
+  private String email;
   private String generateCode;
   private String statusResponese; //D - dodano konto, C - kod został już wykorzystany, K-konto zostało już wcześniej dodane
 }
