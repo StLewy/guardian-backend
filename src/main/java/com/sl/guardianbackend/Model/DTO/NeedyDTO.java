@@ -1,22 +1,15 @@
-package com.sl.guardianbackend.Model;
+package com.sl.guardianbackend.Model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Needy {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class NeedyDTO {
 
   private String name;
   private String bankAccount;
@@ -24,9 +17,5 @@ public class Needy {
   private String cityPL;
   private String description;
   private String generateCode;
-  @OneToOne
-  private Guardian guardian;
-  private String status;
-  private LocalDate creation;
-  private LocalDate update;
+  private String statusResponese; //D - dodano konto, C - kod został już wykorzystany, K-konto zostało już wcześniej dodane
 }

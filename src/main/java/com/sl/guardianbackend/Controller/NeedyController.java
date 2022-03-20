@@ -1,5 +1,6 @@
 package com.sl.guardianbackend.Controller;
 
+import com.sl.guardianbackend.Model.DTO.NeedyDTO;
 import com.sl.guardianbackend.Model.Needy;
 import com.sl.guardianbackend.Service.NeedyService;
 import lombok.AllArgsConstructor;
@@ -23,8 +24,8 @@ public class NeedyController {
     return ResponseEntity.ok().body(needyList);
   }
   @PostMapping("add")
-  public ResponseEntity<String> addNeedy(@RequestBody Needy needy, @RequestParam String generateCode){
-    String isAdd = needyService.addNeedy(needy, generateCode);
-    return ResponseEntity.ok().body(isAdd);
+  public ResponseEntity<NeedyDTO> addNeedy(@RequestBody NeedyDTO needy){
+    NeedyDTO addNeedy = needyService.addNeedy(needy, needy.getGenerateCode());
+    return ResponseEntity.ok().body(addNeedy);
   }
 }

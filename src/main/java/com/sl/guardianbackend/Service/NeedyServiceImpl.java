@@ -1,6 +1,7 @@
 package com.sl.guardianbackend.Service;
 
 import com.sl.guardianbackend.Model.Code;
+import com.sl.guardianbackend.Model.DTO.NeedyDTO;
 import com.sl.guardianbackend.Model.Needy;
 import com.sl.guardianbackend.Repository.NeedyRepository;
 import lombok.AllArgsConstructor;
@@ -23,14 +24,13 @@ public class NeedyServiceImpl implements NeedyService {
   }
 
   @Override
-  public String addNeedy(Needy needy, String generateCode) {
-    String result;
+  public NeedyDTO addNeedy(NeedyDTO needy, String generateCode) {
     Optional<Needy> needy1 = needyRepository.findByBankAccount(needy.getBankAccount());
     Optional<Code> code = codesService.findByGenerateCodeAndRegistration(generateCode, "N");
 
     if (code.isPresent()) {
       if (needy1.isPresent()) {
-        result = "Z";
+        needy.setStatusResponese("K");
       } else {
         Code codeUpdate = new Code();
         codeUpdate.setId(code.get().getId());
@@ -40,14 +40,21 @@ public class NeedyServiceImpl implements NeedyService {
         codeUpdate.setCreation(code.get().getCreation());
 
         codesService.updateCode(codeUpdate);
+        Needy addNeedy = new Needy();
+        addNeedy.setName(needy.getName());
+        addNeedy.setCityUA(needy.getCityUA());
+        addNeedy.setCityPL(needy.getCityPL());
+        addNeedy.setBankAccount(needy.getBankAccount());
+        addNeedy.setDescription(needy.getDescription());
+        addNeedy.setCreation(LocalDate.now());
+        addNeedy.setStatus("O");
+        needyRepository.save(addNeedy);
 
-        needy.setCreation(LocalDate.now());
-        needyRepository.save(needy);
-        result = "D";
+        needy.setStatusResponese("D");
       }
     }else {
-      result = "Z";
+      needy.setStatusResponese("C");
     }
-    return result;
+    return needy;
     }
   }
