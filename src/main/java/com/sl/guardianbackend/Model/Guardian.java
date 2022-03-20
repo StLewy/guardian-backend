@@ -25,7 +25,7 @@ public class Guardian {
   private String name;
   private String surname;
   private String phone;
-  private String mail;
+  private String email;
 
   private LocalDate creation;
   private LocalDate update;
