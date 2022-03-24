@@ -30,7 +30,7 @@ private final NeedyService needyService;
     pairingRepository.save(addPairing);
     findNeedy.setStatus("W");
     needyService.updateNeedy(findNeedy);
-    pairingDTO.setStatusResponese("S");
+    pairingDTO.setStatusResponse("S");
     return pairingDTO;
   }
 }

@@ -15,5 +15,5 @@ public class PairingDTO {
   private int period;
   private double amount;
   private Long idNeed;
-  private String statusResponese;
+  private String statusResponse;
 }
