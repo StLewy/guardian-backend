@@ -58,4 +58,13 @@ public class NeedyServiceImpl implements NeedyService {
     }
     return needy;
     }
+
+  @Override
+  public Needy updateNeedy(Needy needy) {
+    return needyRepository.save(needy);
   }
+
+  public Needy findNeedyById(Long id){
+      return needyRepository.getById(id);
+    }
+}
