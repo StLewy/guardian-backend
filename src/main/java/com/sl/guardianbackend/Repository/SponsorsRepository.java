@@ -1,9 +1,0 @@
-package com.sl.guardianbackend.Repository;
-
-import com.sl.guardianbackend.Model.Sponsor;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface SponsorsRepository extends JpaRepository<Sponsor, Long> {
-}
